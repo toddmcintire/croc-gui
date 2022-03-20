@@ -1,6 +1,9 @@
+from asyncio.subprocess import PIPE
+from pickle import TRUE
 import subprocess
 import ctypes, sys
 import time
+from shutil import which
 
 def is_admin():
     try:
@@ -42,3 +45,29 @@ def changerExecution():
         restrictedStatus = False
     
     return "Restricted" if restrictedStatus == True else "Not restricted no need to change"
+
+
+def installChoco():
+    """installs choco"""
+    if is_admin():
+        result = subprocess.Popen(["C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe","Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"])
+        result.communicate()
+    else:
+        ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
+    return result.stdout
+
+
+def isChocoInstalled():
+    """returns the output of choco"""
+    result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "choco"], check=True, stdout=PIPE)
+    print(result.stdout)
+    return result.stdout
+
+
+def is_tool(name):
+    """Check whether `name` is on PATH and marked as executable."""
+    return which(name) is not None
+
+def exitIfCrocIsNotInstalled():
+    
+    sys.exit("Error message")
