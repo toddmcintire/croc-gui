@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 from installer import *
 
+#setup for app
 root = Tk()
 frame = ttk.Frame(root, padding=10)
 display = Label(frame, text="croc gui")
@@ -11,7 +12,7 @@ display = Label(frame, text="croc gui")
 if is_tool("choco") == False:
     chocoQuit() 
 
-
+#places widgets in the app
 frame.grid()
 root.title("croc gui")
 display.grid(column=3, row=1)
@@ -21,6 +22,6 @@ ttk.Button(frame, text="install choco", command=lambda : display.config(text=ins
 ttk.Button(frame, text="Quit", command=root.destroy).grid(column=5, row=5)
 root.mainloop()
 
-#TODO: check if user has choco installed,  if they dont run an alert window
+#TODO: check if user has croc installed,  if they dont run an alert window that suggests they should run the installer
 
 
