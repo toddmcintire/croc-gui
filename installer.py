@@ -18,8 +18,6 @@ def getExecution():
     result = subprocess.run(["C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe", "Get-ExecutionPolicy"], capture_output=True)
     print(str(result.stdout))
     return str(result.stdout)
-#TODO: function if execution is restricted and change it if user agrees to
-#TODO: read output from powershell call to see if execution policy is set
 
 
 def changerExecution():
@@ -49,6 +47,7 @@ def changerExecution():
     return "Restricted" if restrictedStatus == True else "Not restricted no need to change"
 
 
+#TODO:  change from install choco to install croc until a better solution for installing choco can be worked out
 def installChoco():
     """installs choco"""
     if is_admin():
@@ -57,6 +56,7 @@ def installChoco():
     else:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     return result.stdout
+
 
 
 def isChocoInstalled():
