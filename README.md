@@ -34,7 +34,7 @@ a test function to hopefully install choco one day, currently does not work.
 installChoco()
 ```
 
-#### isChocoInstalled()
+#### isChocoInstalled
 returns 1 if choco is not installed and 0 if choco is installed
 ```
 isChocoInstalled()
@@ -44,4 +44,10 @@ isChocoInstalled()
 checks weather `name` is on PATH and marched as executable and returns .
 ```
 is_tool(name)
+```
+
+#### chocoQuit
+Shows error window and closes the program
+```
+chocoQuit()
 ```
