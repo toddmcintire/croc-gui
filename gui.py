@@ -8,8 +8,10 @@ frame = ttk.Frame(root, padding=10)
 display = Label(frame, text="croc gui")
 notebook = ttk.Notebook(frame)
 
+# Quits the program if choco is not installed and quits
 if is_tool("choco") == False:
-    messagebox.showerror("showerror", "choco is not installed please install first")
+    chocoQuit() 
+
 
 frame.grid()
 root.title("croc gui")
@@ -20,3 +22,5 @@ ttk.Button(frame, text="Quit", command=root.destroy).grid(column=5, row=5)
 root.mainloop()
 
 #TODO: check if user has choco installed,  if they dont run an alert window
+
+
