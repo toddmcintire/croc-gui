@@ -4,6 +4,8 @@ import subprocess
 import ctypes, sys
 import time
 from shutil import which
+from tkinter import *
+from tkinter import messagebox
 
 def is_admin():
     try:
@@ -68,6 +70,11 @@ def is_tool(name):
     """Check whether `name` is on PATH and marked as executable."""
     return which(name) is not None
 
-def exitIfCrocIsNotInstalled():
-    
-    sys.exit("Error message")
+def exitIfCrocIsNotInstalled(toolOutput=is_tool("choco")):
+    """if toolOutput is True then """
+    if toolOutput == True:
+        sys.exit("choco is not currently installed please install") 
+
+def chocoQuit():
+    messagebox.showerror("error", "choco is not installed, please install and rerun the program")
+    sys.exit()
