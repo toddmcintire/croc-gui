@@ -70,11 +70,14 @@ def is_tool(name):
     """Check whether `name` is on PATH and marked as executable."""
     return which(name) is not None
 
-def exitIfCrocIsNotInstalled(toolOutput=is_tool("choco")):
-    """if toolOutput is True then """
+""" 
+def exitIfChocoIsNotInstalled(toolOutput=is_tool("choco")):
+    #if toolOutput is True then 
     if toolOutput == True:
         sys.exit("choco is not currently installed please install") 
+"""
 
 def chocoQuit():
+    """shows error window and closes the program"""
     messagebox.showerror("error", "choco is not installed, please install and rerun the program")
     sys.exit()
