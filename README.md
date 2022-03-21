@@ -1,5 +1,5 @@
 # croc-gui
-croc-gui is a windows graphical user interface (GUI) for [croc](https://github.com/schollz/croc).
+croc-gui is a graphical user interface (GUI) for [croc](https://github.com/schollz/croc) for Windows.
 ## requirements
 until future features are added currently croc-gui requires that `croc` be installed via powershell with [Chocolatey](https://chocolatey.org). 
 run powershell as administrator
