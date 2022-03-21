@@ -29,7 +29,7 @@ changerExecution()
 ```
 
 #### installChoco
-a test function to hopefully install choco one day
+a test function to hopefully install choco one day, currently does not work.
 ```
 installChoco()
 ```
@@ -41,7 +41,7 @@ isChocoInstalled()
 ```
 
 #### is_tool
-checks weather `name` is on PATH and marched as excecutable.
+checks weather `name` is on PATH and marched as executable and returns .
 ```
 is_tool(name)
 ```
