@@ -8,6 +8,7 @@ from tkinter import *
 from tkinter import messagebox
 
 def is_admin():
+    """checks if user has administrator rights"""
     try:
         return ctypes.windll.shell32.IsUserAnAdmin()
     except:
@@ -56,6 +57,16 @@ def installChoco():
     else:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     return result.stdout
+
+def installCroc():
+    response = messagebox.askquestion("install auth", "Do I have your permission to install croc?")
+    if response == "yes":
+        messagebox.showinfo("install auth accepted", "installation will now proceed")
+        #TODO: complete function so that it installs croc with choco
+    elif response == "no":
+        messagebox.showinfo("install auth declined", "installation will now quit")
+    else:
+        messagebox.showinfo("install auth error", "unknown error quitting")
 
 
 
