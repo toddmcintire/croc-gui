@@ -1,11 +1,16 @@
 from asyncio.subprocess import PIPE
-from pickle import TRUE
+#from pickle import TRUE
 import subprocess
 import ctypes, sys
 import time
-from shutil import which
-from tkinter import *
-from tkinter import messagebox
+#from shutil import which    -------changed to import below
+import shutil
+import tkinter as tk
+import tkinter.filedialog, tkinter.messagebox
+#from tkinter import *
+#from tkinter.filedialog import askopenfile, askopenfiles
+#from tkinter import messagebox
+#import PySide6.QtWidgets as qt
 
 def is_admin():
     """checks if user has administrator rights"""
@@ -52,21 +57,25 @@ def changerExecution():
 def installChoco():
     """installs choco"""
     if is_admin():
-        result = subprocess.Popen(["C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe","Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"])
+        result = subprocess.Popen(["C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\powershell.exe","Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))"])
         result.communicate()
     else:
         ctypes.windll.shell32.ShellExecuteW(None, "runas", sys.executable, " ".join(sys.argv), None, 1)
     return result.stdout
 
 def installCroc():
-    response = messagebox.askquestion("install auth", "Do I have your permission to install croc?")
+    """installs croc with gui""" 
+    response = tk.messagebox.askquestion("install auth", "Do I have your permission to install croc?")
     if response == "yes":
-        messagebox.showinfo("install auth accepted", "installation will now proceed")
+        tk.messagebox.showinfo("install auth accepted", "installation will now proceed")
         #TODO: complete function so that it installs croc with choco
+        result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "choco install croc"], check=True, stdout=PIPE)
+        print(result.stdout)
+        return result.stdout
     elif response == "no":
-        messagebox.showinfo("install auth declined", "installation will now quit")
+        tk.messagebox.showinfo("install auth declined", "installation will now quit")
     else:
-        messagebox.showinfo("install auth error", "unknown error quitting")
+        tk.messagebox.showinfo("install auth error", "unknown error quitting")
 
 
 
@@ -78,8 +87,13 @@ def isChocoInstalled():
 
 
 def is_tool(name):
-    """Check whether `name` is on PATH and marked as executable."""
-    return which(name) is not None
+    """
+    Check whether `name` is on PATH and marked as executable.
+    
+    >>> is_tool('ls')
+    True
+    """
+    return shutil.which(name) is not None
 
 """ 
 def exitIfChocoIsNotInstalled(toolOutput=is_tool("choco")):
@@ -90,5 +104,21 @@ def exitIfChocoIsNotInstalled(toolOutput=is_tool("choco")):
 
 def chocoQuit():
     """shows error window and closes the program"""
-    messagebox.showerror("error", "choco is not installed, please install and rerun the program")
+    tk.messagebox.showerror("error", "choco is not installed, please install and rerun the program")
     sys.exit()
+
+
+#TODO: send button
+#needs to be able to select files
+def file_select():
+    filename = tk.filedialog.askopenfilenames()
+    print(filename)
+    result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "croc send" +  str(filename)])
+    print(result)
+
+
+#displays code in a text box
+#displays sending progress bar
+#TODO: recieve button
+#acceptance of files
+#displays recieving progress bar
