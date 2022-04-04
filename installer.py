@@ -112,9 +112,30 @@ def chocoQuit():
 #needs to be able to select files
 def file_select():
     filename = tk.filedialog.askopenfilenames()
-    print(filename)
-    result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "croc send" +  str(filename)])
-    print(result)
+
+    def sanatizePath(path):
+        """removes the brackets from the string"""
+        stringfile = str(path)
+        removeComma = path.replace(",","")
+        removeQuote = removeComma.replace("'","")
+        removeP1 = removeQuote.replace("(","")
+        removeP2 = removeP1.replace(")","")
+        path = removeP2
+        return path
+    
+    if sys.platform.startswith('win32'):
+        result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "croc send" +  str(filename)])
+        print(result)
+    elif sys.platform.startswith('linux'):
+        result = subprocess.run(["croc send" +  str(filename)])
+        print(result)
+    elif sys.platform.startswith('darwin'):
+        sanatizePath(filename)
+        command = ["croc", "send", path]
+        result = subprocess.run(command, shell=False)
+        #print(full)
+    else:
+        print("unknown platform")
 
 
 #displays code in a text box
