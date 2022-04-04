@@ -116,7 +116,7 @@ def file_select():
     def sanatizePath(path):
         """removes the brackets from the string"""
         stringfile = str(path)
-        removeComma = path.replace(",","")
+        removeComma = stringfile.replace(",","")
         removeQuote = removeComma.replace("'","")
         removeP1 = removeQuote.replace("(","")
         removeP2 = removeP1.replace(")","")
@@ -127,13 +127,13 @@ def file_select():
         result = subprocess.run(["C:\\WINDOWS\\system32\\cmd.exe", "croc send" +  str(filename)])
         print(result)
     elif sys.platform.startswith('linux'):
-        result = subprocess.run(["croc send" +  str(filename)])
-        print(result)
+        path = sanatizePath(filename)
+        command = ["croc", "send", path]
+        result = subprocess.run(command, shell=False) 
     elif sys.platform.startswith('darwin'):
-        sanatizePath(filename)
+        path = sanatizePath(filename)
         command = ["croc", "send", path]
         result = subprocess.run(command, shell=False)
-        #print(full)
     else:
         print("unknown platform")
 
