@@ -2,7 +2,32 @@
 // This example app is written with vanilla JavaScript and HTML.
 // Feel free to use any frontend framework you like :)
 // See more details: https://neutralino.js.org/docs/how-to/use-a-frontend-library
+var number = 0;
 
+function showNumber(number) {
+	document.getElementById('number').innerHTML = `${number}`;
+}
+
+function increaseNumber() {
+    number++;
+    showNumber(number);
+}
+
+function decreaseNumber() {
+    number--;
+    showNumber(number);
+}
+
+
+function testNotification() {
+    Neutralino.os.showNotification("Test notification", "This is a test notification.");
+}
+
+
+
+
+
+//default code
 function showInfo() {
     document.getElementById('info').innerHTML = `
         ${NL_APPID} is running on port ${NL_PORT}  inside ${NL_OS}
@@ -61,3 +86,4 @@ if(NL_OS != "Darwin") { // TODO: Fix https://github.com/neutralinojs/neutralinoj
 }
 
 showInfo();
+showNumber(number);

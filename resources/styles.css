@@ -14,3 +14,7 @@
     font-size: 16px;
     font-weight: normal;
 }
+
+#button p {
+    text-align: center;
+}

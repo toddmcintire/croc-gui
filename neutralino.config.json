@@ -31,9 +31,9 @@
   },
   "modes": {
     "window": {
-      "title": "croc-gui-js",
+      "title": "croc gui",
       "width": 800,
-      "height": 500,
+      "height": 600,
       "minWidth": 400,
       "minHeight": 200,
       "fullScreen": false,
@@ -44,7 +44,7 @@
       "maximize": false,
       "hidden": false,
       "resizable": true,
-      "exitProcessOnClose": false
+      "exitProcessOnClose": true
     },
     "browser": {
       "globalVariables": {
@@ -71,7 +71,7 @@
     }
   },
   "cli": {
-    "binaryName": "croc-gui-js",
+    "binaryName": "croc-gui",
     "resourcesPath": "/resources/",
     "extensionsPath": "/extensions/",
     "clientLibrary": "/resources/js/neutralino.js",
