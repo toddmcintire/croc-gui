@@ -19,11 +19,24 @@ function decreaseNumber() {
 }
 
 
-function testNotification() {
-    Neutralino.os.showNotification("Test notification", "This is a test notification.");
+function testNotification(words) {
+    Neutralino.os.showNotification(`${words}`);
 }
 
-
+function testZX() {
+    //spawn new window
+    Neutralino.window.create('/testpage.html', {
+        title: "new window page",
+        width: 400,
+        height: 400,
+        exitProcessOnClose: true
+    });
+     //as if they want to run command
+     //document.getElementById('testZX').innerHTML = `do you want to run test command?`;
+     //run command
+     //maybe a notification if it succeds?
+     //maybe display output on screen?
+}
 
 
 

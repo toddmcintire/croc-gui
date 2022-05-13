@@ -12,48 +12,21 @@ Set-ExecutionPolicy AllSigned; [System.Net.ServicePointManager]::SecurityProtoco
 choco install croc
 ```
 
-### functions 
+For apple devices install with homebrew
+
+```
+brew install croc
+```
+
+## installation
 
 ***
 
-#### isAdmin  
-checks if currently ran as admin
-```
-isAdmin()
-```
+for windows
 
-#### getExecution
-returns the output of the Get-ExecutionPolicy powershell cmdlet
-```
-getExecution()
-```
+for mac
 
-#### changerExecution
-if getExecution is returned as restricted then it attempts to change it to allsigned if the user agrees
-```
-changerExecution()
-```
+for linux
 
-#### installChoco
-a test function to hopefully install choco one day, currently does not work.
-```
-installChoco()
-```
+***
 
-#### isChocoInstalled
-returns 1 if choco is not installed and 0 if choco is installed
-```
-isChocoInstalled()
-```
-
-#### is_tool
-checks weather `name` is on PATH and marched as executable and returns .
-```
-is_tool(name)
-```
-
-#### chocoQuit
-Shows error window and closes the program
-```
-chocoQuit()
-```
