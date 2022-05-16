@@ -14,5 +14,8 @@
   "bugs": {
     "url": "https://github.com/toddmcintire/croc-gui/issues"
   },
-  "homepage": "https://github.com/toddmcintire/croc-gui#readme"
+  "homepage": "https://github.com/toddmcintire/croc-gui#readme",
+  "dependencies": {
+    "zx": "^6.1.0"
+  }
 }
