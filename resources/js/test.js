@@ -3,8 +3,10 @@ function setText() {
 }
 
 async function textConfirmation() {
-    let  commandResponse = await Neutralino.os.execCommand('echo "hello world"');
-    document.getElementById('response').innerHTML = commandResponse.stdOut;
+    let commandResponse = await Neutralino.os.execCommand('echo "hello world"');
+    let os = NL_OS;
+    document.getElementById('question').innerHTML = `${os}`;
+    //document.getElementById('response').innerHTML = commandResponse.stdOut;
 }
 
 Neutralino.init();

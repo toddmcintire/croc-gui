@@ -9,7 +9,7 @@ void async function test() {
 		install.includes(yes) === true
 			? $`curl https://getcroc.schollz.com | bash`
 			: install.includes(no) === true
-				? continue
+				? //continue
 				: //error not a proper responce;
 	}
 

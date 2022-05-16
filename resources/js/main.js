@@ -23,9 +23,9 @@ function testNotification(words) {
     Neutralino.os.showNotification(`${words}`);
 }
 
-function testZX() {
+function newPage() {
     //spawn new window
-    Neutralino.window.create('/testpage.html', {
+    Neutralino.window.create('/html/testpage.html', {
         title: "new window page",
         width: 400,
         height: 400,
@@ -38,6 +38,16 @@ function testZX() {
      //maybe display output on screen?
 }
 
+
+function testZX() {
+    //spawn new window
+    Neutralino.window.create('/testZX.html', {
+        title: "ZX test page",
+        width: 400,
+        height: 400,
+        exitProcessOnClose: true
+    });
+}
 
 
 //default code
