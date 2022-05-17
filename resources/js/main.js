@@ -2,26 +2,9 @@
 // This example app is written with vanilla JavaScript and HTML.
 // Feel free to use any frontend framework you like :)
 // See more details: https://neutralino.js.org/docs/how-to/use-a-frontend-library
-var number = 0;
-
-function showNumber(number) {
-	document.getElementById('number').innerHTML = `${number}`;
-}
-
-function increaseNumber() {
-    number++;
-    showNumber(number);
-}
-
-function decreaseNumber() {
-    number--;
-    showNumber(number);
-}
 
 
-function testNotification(words) {
-    Neutralino.os.showNotification(`${words}`);
-}
+
 
 function newPage() {
     //spawn new window
