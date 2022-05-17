@@ -41,7 +41,7 @@ function newPage() {
 
 function testZX() {
     //spawn new window
-    Neutralino.window.create('/testZX.html', {
+    Neutralino.window.create('/html/testZX.html', {
         title: "ZX test page",
         width: 400,
         height: 400,
