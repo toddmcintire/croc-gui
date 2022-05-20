@@ -1,59 +1,40 @@
 # croc-gui
-croc-gui is a graphical user interface (GUI) for [croc](https://github.com/schollz/croc) for Windows.
+croc-gui is a graphical user interface (GUI) for [croc](https://github.com/schollz/croc) for Windows, Mac and Linux.
 ## requirements
+***
+You will need to install [croc](https://github.com/schollz/croc) based on your devices method, There is some intructions below but its a good idea to check [croc's](https://github.com/schollz/croc) page directly and verify.
 
+## Installation
 ***
 
+### Windows
 until future features are added currently croc-gui requires that `croc` be installed via powershell with [Chocolatey](https://chocolatey.org). 
 run powershell as administrator
 ```
 Set-ExecutionPolicy AllSigned; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+```
 
+and then install 
+
+```
 choco install croc
 ```
 
-### functions 
+### Mac
+For apple devices its reccomended you install croc with [homebrew](https://brew.sh)
+```
+brew install croc
+```
+### Linux
 
+
+
+
+## Develop
 ***
 
-#### isAdmin  
-checks if currently ran as admin
-```
-isAdmin()
-```
+in order to start working on croc-gui you will need to get your own version of the neutralinojs binaries, the easiest way to do so is to create a new blank project with npx and then copy the `bin` folder into the project folder.
 
-#### getExecution
-returns the output of the Get-ExecutionPolicy powershell cmdlet
 ```
-getExecution()
-```
-
-#### changerExecution
-if getExecution is returned as restricted then it attempts to change it to allsigned if the user agrees
-```
-changerExecution()
-```
-
-#### installChoco
-a test function to hopefully install choco one day, currently does not work.
-```
-installChoco()
-```
-
-#### isChocoInstalled
-returns 1 if choco is not installed and 0 if choco is installed
-```
-isChocoInstalled()
-```
-
-#### is_tool
-checks weather `name` is on PATH and marched as executable and returns .
-```
-is_tool(name)
-```
-
-#### chocoQuit
-Shows error window and closes the program
-```
-chocoQuit()
+npx @neutralinojs/neu create testProject
 ```
