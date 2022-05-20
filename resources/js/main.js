@@ -33,22 +33,51 @@ function testZX() {
 }
 
 
+//send page
+function sendPage() {
+    //spawns a new window
+    Neutralino.window.create('/html/send.html', {
+        // set page for new window
+        title: "send page",
+        // set width and height for new window
+        width: 400,
+        height: 400,
+        // makes so that the window closes when the process exits
+        exitProcessOnClose: true
+    });
+}
+
+function recievePage() {
+    Neutralino.window.create('/html/recieve.html', {
+        title: "recieve page",
+        width: 400,
+        height: 400,
+        exitProcessOnClose: true
+    });
+}
+
+//recieve page
+
 //default code
-function showInfo() {
-    document.getElementById('info').innerHTML = `
-        ${NL_APPID} is running on port ${NL_PORT}  inside ${NL_OS}
-        <br/><br/>
-        <span>server: v${NL_VERSION} . client: v${NL_CVERSION}</span>
-        `;
-}
 
-function openDocs() {
-    Neutralino.os.open("https://neutralino.js.org/docs");
-}
+// function that shows basic info in the "info" div in index.html
+// function showInfo() {
+//     document.getElementById('info').innerHTML = `
+//         ${NL_APPID} is running on port ${NL_PORT}  inside ${NL_OS}
+//         <br/><br/>
+//         <span>server: v${NL_VERSION} . client: v${NL_CVERSION}</span>
+//         `;
+// }
 
-function openTutorial() {
-    Neutralino.os.open("https://www.youtube.com/watch?v=txDlNNsgSh8&list=PLvTbqpiPhQRb2xNQlwMs0uVV0IN8N-pKj");
-}
+// function that when button is clicked it opens a webpage to the provided link
+// function openDocs() {
+//     Neutralino.os.open("https://neutralino.js.org/docs");
+// }
+
+// function that when button is clicked it opens a webpage to the provided link
+// function openTutorial() {
+//     Neutralino.os.open("https://www.youtube.com/watch?v=txDlNNsgSh8&list=PLvTbqpiPhQRb2xNQlwMs0uVV0IN8N-pKj");
+// }
 
 function setTray() {
     if(NL_MODE != "window") {
