@@ -149,3 +149,8 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+
+#------------extra added------------------------------
+# For temp folder that randomly appeared
+.tmp
