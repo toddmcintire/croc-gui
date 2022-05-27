@@ -7,29 +7,41 @@ async function setFileLocation() {
     return await Neutralino.os.showFolderDialog('Select installation directory');
 }
 
-//TODO: get code from html
-
-async function getCode() {
-    
+async function createDownloadFolder(location) {
+    Neutralino.filesystem.createDirectory(location + '/CrocDownload');
 }
 
-//TODO: check if code is correct
-//TODO: if code is correct do below
-//TODO: create new folder for downloads
+async function checkDownloadFolder(location) {
+    await Neutralino.filesystem.readDirectory(location + '/CrocDownload') === NE_FS_NOPATHE ? createDownloadFolder(location) : console.log('folder already exists');
+}
 //TODO: download files
+async function downloadFiles(code, location) {
+    //change directory to the download folder
+    
+    //run command to download folder
+    await Neutralino.os.execCommand(`croc ${code}`);
+
+    //TODO: throw error if code is too short
+}
 //TODO: display 
 
+//TODO: get code from html
+//TODO: check if code is correct
 
-async function recieveCode() {
+
+
+async function getCode() {
     // gets the code from the input form
     var code = document.getElementById("value").value;
     // displays the output of the code to the "text" div
     let crocCommand = await Neutralino.os.execCommand(`croc ${code}`);
+    // sets crocCommand error to error variable
     let error = crocCommand.stdErr;
+    
     //TODO: FIX THIS LINE 
-    let jsonStringerr = JSON.stringify(crocCommand.stdErr);
-    let jsonStringout = JSON.stringify(crocCommand.stdOut);
+    //let jsonStringerr = JSON.stringify(crocCommand.stdErr);
     document.getElementById("text").innerHTML = `${jsonStringerr}`;
 }
+
 
 Neutralino.init();
