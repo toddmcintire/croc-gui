@@ -2,6 +2,8 @@
 //TODO: ask for place to save the files otherwise save it in the downloads folder?
 //TODO: upon entering code and clicking submit the program downlaods and shows progress until completeion
 
+import { openFolder } from "../zx/openfolder";
+
 /** Sets file install directory. */
 async function setFileLocation() {
     return await Neutralino.os.showFolderDialog('Select installation directory');
@@ -22,12 +24,10 @@ async function downloadFiles(code, location) {
     await Neutralino.os.execCommand(`croc ${code}`);
 
     //TODO: throw error if code is too short
+
+    // opens files after download
+    openFolder(location);
 }
-//TODO: display 
-
-//TODO: get code from html
-//TODO: check if code is correct
-
 
 
 async function getCode() {
