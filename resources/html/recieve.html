@@ -5,9 +5,9 @@
         <link rel="shortcut icon" href="../icons/favicon.ico" type="image/x-icon">
     </head>
     <body>
-        <button onclick="setFileLocation();">press me</button>
+        <button onclick="testLocation();">set location</button>
         <div id="text"></div>
-        <form id="myAnchor" style="text-align: center;">
+        <form id="myAnchor" style="text-align: center;" onsubmit="event.preventDefault();">
             <p style="color: white; font-family: Lucida Console; font-size: 12px" id="commandText">enter code</p>
             <input type="text" id="value" name="value">
             <input type="submit" value="test" onclick="getCode();">
@@ -15,6 +15,5 @@
         <!--button to submit code-->
         <script src="../js/neutralino.js"></script>
         <script src="../js/recievePage.js"></script>
-        <script type="text/javascript" src="../zx/openfolder.js"></script>
     </body>
 </html>

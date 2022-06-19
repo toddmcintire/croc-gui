@@ -47,6 +47,7 @@ function sendPage() {
     });
 }
 
+//recieve page
 function recievePage() {
     Neutralino.window.create('/html/recieve.html', {
         title: "recieve page",
@@ -56,10 +57,7 @@ function recievePage() {
     });
 }
 
-//recieve page
-
 //default code
-
 // function that shows basic info in the "info" div in index.html
 // function showInfo() {
 //     document.getElementById('info').innerHTML = `
