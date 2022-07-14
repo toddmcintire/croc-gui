@@ -32,9 +32,3 @@ brew install croc
 
 ## Develop
 ***
-
-in order to start working on croc-gui you will need to get your own version of the neutralinojs binaries, the easiest way to do so is to create a new blank project with npx and then copy the `bin` folder into the project folder.
-
-```
-npx @neutralinojs/neu create testProject
-```
