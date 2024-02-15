@@ -2,7 +2,7 @@
 #![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
 
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
-use std::process::Command;
+use std::{io::Read, process::{Command, Stdio}};
 
 #[tauri::command]
 fn get_message(code: &str) -> String {
@@ -10,23 +10,25 @@ fn get_message(code: &str) -> String {
             .arg("--yes")
             .arg(code)
             .output()
-            .expect("ls command failed to start");
+            .expect("croc command failed to start");
     
     let output = command.stdout;
     format!("{}", String::from_utf8(output).expect("error"))
 }
 
+//TODO resolve ChildStdout
 #[tauri::command]
 fn send_message(message: &str) -> String {
     let command = Command::new("croc")
             .arg("send")
             .arg("--text")
             .arg(message)
-            .output()
-            .expect("ls command failed to start");
-    
-    let output = command.stdout;
-    format!("{}", String::from_utf8(output).expect("error"))
+            .stdout(Stdio::piped())
+            .spawn()
+            .expect("croc command failed to start");
+
+    let output = command.stdout.unwrap();
+    format!("{}", String::from_utf8_lossy(&output))
 }
 
 fn main() {
